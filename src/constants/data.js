@@ -1,88 +1,57 @@
-import images from './images';
-
-const wines = [
+const lassis = [
   {
-    title: 'Chapel Hill Shiraz',
-    price: '$56',
-    tags: 'AU | Bottle',
+    title: 'Jumbo Sweet Lassi',
+    price: '₹140',
+    tags: 'The Iconic Old Delhi Refresher',
   },
   {
-    title: 'Catena Malbee',
-    price: '$59',
-    tags: 'AU | Bottle',
+    title: 'Jumbo Mango Lassi',
+    price: '₹155',
+    tags: 'Ripe Mango & Creamy Yogurt',
   },
   {
-    title: 'La Vieillw Rose',
-    price: '$44',
-    tags: 'FR | 750 ml',
+    title: 'Dry Fruit Lassi',
+    price: '₹155',
+    tags: 'Hearty, Nutty & Rich',
   },
   {
-    title: 'Rhino Pale Ale',
-    price: '$31',
-    tags: 'CA | 750 ml',
+    title: 'Pineapple Shake',
+    price: '₹195',
+    tags: 'Real Pineapple & Vanilla Cream',
   },
   {
-    title: 'Irish Guinness',
-    price: '$26',
-    tags: 'IE | 750 ml',
+    title: 'Virgin Mojito',
+    price: '₹159',
+    tags: 'Refreshing Mint & Lime Twist',
   },
 ];
 
-const cocktails = [
+const mainCourse = [
   {
-    title: 'Aperol Sprtiz',
-    price: '$20',
-    tags: 'Aperol | Villa Marchesi prosecco | soda | 30 ml',
+    title: 'Dal Makhani',
+    price: '₹339',
+    tags: 'The Legend since 1942 | Slow-cooked',
   },
   {
-    title: "Dark 'N' Stormy",
-    price: '$16',
-    tags: 'Dark rum | Ginger beer | Slice of lime',
+    title: 'Paneer Butter Masala',
+    price: '₹380',
+    tags: 'Signature Dish | Creamy Tomato Gravy',
   },
   {
-    title: 'Daiquiri',
-    price: '$10',
-    tags: 'Rum | Citrus juice | Sugar',
+    title: 'Amritsari Kulcha',
+    price: '₹149',
+    tags: 'Stuffed with Herbs & Spices',
   },
   {
-    title: 'Old Fashioned',
-    price: '$31',
-    tags: 'Bourbon | Brown sugar | Angostura Bitters',
+    title: 'Kake Naan (Stuffed)',
+    price: '₹200',
+    tags: 'The King of Naan | Chef\'s Secret',
   },
   {
-    title: 'Negroni',
-    price: '$26',
-    tags: 'Gin | Sweet Vermouth | Campari | Orange garnish',
-  },
-];
-
-const awards = [
-  {
-    imgUrl: images.award02,
-    title: 'Bib Gourmond',
-    subtitle: 'Lorem ipsum dolor sit amet, consectetur.',
-  },
-  {
-    imgUrl: images.award01,
-    title: 'Rising Star',
-    subtitle: 'Lorem ipsum dolor sit amet, consectetur.',
-  },
-  {
-    imgUrl: images.award05,
-    title: 'AA Hospitality',
-    subtitle: 'Lorem ipsum dolor sit amet, consectetur.',
-  },
-  {
-    imgUrl: images.award03,
-    title: 'Outstanding Chef',
-    subtitle: 'Lorem ipsum dolor sit amet, consectetur.',
+    title: 'Malai Kofta',
+    price: '₹380',
+    tags: 'Velvety Dumplings in Golden Gravy',
   },
 ];
 
-const data = {
-  wines,
-  cocktails,
-  awards,
-};
-
-export default data;
+export default { lassis, mainCourse };
