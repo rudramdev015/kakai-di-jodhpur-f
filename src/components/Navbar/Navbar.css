@@ -1,133 +1,235 @@
+:root {
+    --gold-primary: #DCCA87;
+    --gold-gradient: linear-gradient(135deg, #FFD700 0%, #DCCA87 100%);
+    --dark-bg: #0c0c0c;
+    --glass-bg: rgba(12, 12, 12, 0.9);
+}
+
 .app__navbar {
     width: 100%;
+    height: 100px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: var(--color-black);
-
-    padding: 1rem 2rem;
+    padding: 0 4rem;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    background: transparent;
+    transition: all 0.4s ease-in-out;
 }
 
-.app__navbar-logo {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+/* Stunning Glass Effect on Scroll */
+.navbar-glass-active {
+    height: 75px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(220, 202, 135, 0.15);
 }
 
-.app__navbar-logo img {
-    width: 150px;
+/* Logo Sizing */
+.heritage-logo-svg {
+    height: 75px;
+    width: auto;
+    transition: 0.4s;
 }
 
+.navbar-glass-active .heritage-logo-svg {
+    height: 60px;
+}
+
+/* Navigation Link Styling */
 .app__navbar-links {
     flex: 1;
     display: flex;
     justify-content: center;
-    align-items: center;
-
     list-style: none;
 }
 
 .app__navbar-links li {
-    margin: 0 1rem;
-    cursor: pointer;
+    margin: 0 1.5rem;
 }
 
-.app__navbar-links li:hover {
-    color: var(--color-grey);
-}
-
-.app__navbar-login {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-}
-
-.app__navbar-login a {
-    margin: 0 1rem;
+.app__navbar-links a {
+    color: #fff;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
     text-decoration: none;
-    transition: .5s ease;
+    transition: 0.3s;
+    font-size: 15px;
 }
 
-.app__navbar-login a:hover {
-    border-bottom: 1px solid var(--color-golden);
+.app__navbar-links a:hover {
+    color: var(--gold-primary);
 }
 
-.app__navbar-login div {
-    width: 1px;
-    height: 30px;
-    background: var(--color-grey);
+/* Action Buttons */
+.app__navbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
 }
 
+.nav-action-call {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.icon-pulse {
+    color: var(--gold-primary);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.premium-whatsapp-btn {
+    background: var(--gold-gradient);
+    padding: 10px 22px;
+    color: #000 !important;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 13px;
+    box-shadow: 0 4px 15px rgba(220, 202, 135, 0.2);
+}
+
+/* Mobile Icon */
 .app__navbar-smallscreen {
     display: none;
 }
 
-.app__navbar-smallscreen_overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: var(--color-black);
-    transition: .5s ease;
-
-    flex-direction: column;
-    z-index: 5;
-}
-
-.app__navbar-smallscreen_overlay .overlay__close {
-    font-size: 27px;
-    color: var(--color-golden);
+.hamburger-icon {
+    font-size: 28px;
     cursor: pointer;
-
-    position: absolute;
-    top: 20px;
-    right: 20px;
 }
 
-.app__navbar-smallscreen_links {
-    list-style: none;
-}
-
-.app__navbar-smallscreen_links li {
-    margin: 2rem;
-    cursor: pointer;
-    color: var(--color-golden);
-    font-size: 2rem;
-    text-align: center;
-    font-family: var(--font-base);
-}
-
-.app__navbar-smallscreen_links li:hover {
-    color: var(--color-white);
-}
-
-@media screen and (min-width: 2000px) {
-    .app__navbar-logo img {
-        width: 210px;
-    }
-}
+/* --- RESPONSIVENESS (THE MAGIC) --- */
 
 @media screen and (max-width: 1150px) {
+    .app__navbar {
+        padding: 0 2rem;
+    }
     .app__navbar-links {
         display: none;
     }
-
     .app__navbar-smallscreen {
         display: flex;
+    }
+    .hide-on-tablet {
+        display: none;
     }
 }
 
 @media screen and (max-width: 650px) {
     .app__navbar {
-        padding: 1rem;
+        padding: 0 1rem;
+        height: 70px;
     }
+    .navbar-glass-active {
+        height: 65px;
+    }
+    .heritage-logo-svg {
+        height: 55px;
+    }
+    .premium-whatsapp-btn {
+        padding: 8px 14px;
+        font-size: 11px;
+    }
+    .nav-action-call {
+        font-size: 20px; /* Only show icon */
+    }
+}
 
-    .app__navbar-login {
-        display: none;
-    }
+/* Elegant Mobile Overlay */
+.app__navbar-mobile-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100vh;
+    background: var(--dark-bg);
+    z-index: 5000;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+}
 
-    .app__navbar-logo img {
-        width: 110px;
-    }
+.mobile-menu-content {
+    margin: auto;
+    text-align: center;
+}
+
+.mobile-overlay-logo {
+    height: 80px;
+    margin-bottom: 2rem;
+}
+
+.app__navbar-mobile-links {
+    list-style: none;
+}
+
+.app__navbar-mobile-links li {
+    margin: 1.5rem 0;
+}
+
+.app__navbar-mobile-links a {
+    font-size: 2rem;
+    color: var(--gold-primary);
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: var(--font-base);
+}
+
+.mobile-cta-container {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.mobile-btn {
+    padding: 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.call-outline {
+    border: 1px solid var(--gold-primary);
+    color: var(--gold-primary);
+}
+
+.wa-solid {
+    background: #25D366;
+    color: #fff;
+}
+
+.overlay__close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: var(--gold-primary);
+}
+
+/* Animations */
+.scale-in-center {
+	animation: scale-in-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@keyframes scale-in-center {
+  0% { transform: scale(0); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
 }

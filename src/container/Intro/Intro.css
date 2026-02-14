@@ -1,18 +1,36 @@
 .app__video {
     height: 100vh;
     position: relative;
+    background-color: #000; /* Prevents white flash before load */
+    overflow: hidden;
+}
+
+/* Use height 100dvh for modern mobile browsers to fix address bar issues */
+@supports (height: 100dvh) {
+    .app__video {
+        height: 100dvh;
+    }
 }
 
 .app__video video {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* Ensures video fills screen without stretching */
 }
 
 .app__video-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(0,0,0,0.65);
+    background: rgba(0, 0, 0, 0.45); /* Darker overlay for better contrast */
+    transition: background 0.5s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* When video is playing, make overlay lighter or hidden */
+.hide-overlay {
+    background: rgba(0, 0, 0, 0.1);
 }
 
 .app__video-overlay_circle {
@@ -21,4 +39,58 @@
     border-radius: 50%;
     border: 1px solid var(--color-golden);
     cursor: pointer;
+    transition: all 0.3s ease;
+    background: transparent;
+}
+
+.app__video-overlay_circle:hover {
+    transform: scale(1.1);
+    background: rgba(220, 202, 135, 0.2); /* Slight golden glow */
+}
+
+.video-icon {
+    transition: transform 0.2s ease;
+}
+
+/* --- RESPONSIVENESS --- */
+
+/* For Extra Large Screens (4K/Large Desktops) */
+@media screen and (min-width: 2000px) {
+    .app__video-overlay_circle {
+        width: 150px;
+        height: 150px;
+    }
+    .app__video-overlay_circle svg {
+        font-size: 45px !important;
+    }
+}
+
+/* For Tablets and smaller Desktops */
+@media screen and (max-width: 1024px) {
+    .app__video {
+        height: 70vh; /* Adjust height for tablet view if you don't want full screen */
+    }
+}
+
+/* For Mobile Devices (Phones) */
+@media screen and (max-width: 650px) {
+    .app__video {
+        height: 50vh; /* Best height for mobile scrolling */
+    }
+
+    .app__video-overlay_circle {
+        width: 60px; /* Smaller button for mobile */
+        height: 60px;
+    }
+
+    .app__video-overlay_circle svg {
+        font-size: 20px !important;
+    }
+}
+
+/* For very small phones or landscape mobile */
+@media screen and (max-height: 450px) {
+    .app__video {
+        height: 100vh;
+    }
 }

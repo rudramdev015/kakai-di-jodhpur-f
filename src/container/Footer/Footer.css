@@ -1,15 +1,10 @@
 .app__footer {
     width: 100%;
-    position: relative;
-    z-index: 1;
-
+    background: #0C0C0C;
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
     flex-direction: column;
-
-    background: var(--color-black);
-    padding-top: 0;
+    align-items: center;
+    padding: 5rem 2rem 2rem;
 }
 
 .app__footer-links {
@@ -17,89 +12,99 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-
-    margin-top: 5rem;
-    padding: 0 2rem;
+    margin-bottom: 5rem;
 }
 
-.app__footer-links_contact,
-.app__footer-links_logo,
-.app__footer-links_work {
-    flex: 1;
-    margin: 1rem;
-    text-align: center;
+/* --- LOGO REFINEMENT --- */
+.footer-logo-premium-glow {
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    border: 3px solid #D2CA87; /* Thick Golden Border */
+    padding: 8px;
+    background: #1a1a1a;
+    box-shadow: 0 0 35px rgba(210, 202, 135, 0.4); /* Stunning Golden Aura */
+    margin-bottom: 1.5rem;
+    transition: 0.5s ease-in-out;
 }
 
-.app__footer-links_logo img:first-child {
-    width: 210px;
-    margin-bottom: 0.75rem;
+.footer-logo-premium-glow:hover {
+    transform: scale(1.08) rotate(5deg);
+    box-shadow: 0 0 50px rgba(210, 202, 135, 0.7);
 }
 
-
-.app__footer-links_work p:nth-child(2n + 1) {
-    margin-bottom: 1rem;
+.footer-logo-premium-glow img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 50%;
 }
 
-.app__footer-links_icons {
-    margin-top: 0.5rem;
-}
-
-.app__footer-links_icons svg {
+.footer__headtext {
+    font-family: var(--font-base);
     color: var(--color-white);
-    margin: 0.5rem;
-    font-size: 24px;
+    font-size: 32px;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.04em;
+    text-transform: capitalize;
+}
+
+/* --- SOCIAL ICON ANIMATION --- */
+.app__footer-links_icons svg {
+    color: #fff;
+    margin: 1rem;
+    font-size: 30px;
     cursor: pointer;
+    transition: 0.4s;
 }
 
 .app__footer-links_icons svg:hover {
-    color: var(--color-golden);
+    color: #D2CA87;
+    transform: translateY(-8px);
 }
 
-.app__footer-headtext {
-    font-family: var(--font-base);
-    color: var(--color-white);
-    font-weight: 400;
-    letter-spacing: 0.04em;
-    text-transform: capitalize;
-    font-size: 32px;
-    line-height: 41.6px;
-    margin-bottom: 1rem;
+/* --- CINEMATIC MAP STYLING --- */
+.app__footer-map-container {
+    width: 100%;
+    max-width: 1300px;
+    margin-bottom: 4rem;
+}
+
+.map-wrapper {
+    width: 100%;
+    border: 1px solid rgba(210, 202, 135, 0.3);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+    /* This filter makes the map look premium and dark */
+    filter: invert(90%) hue-rotate(180deg) brightness(1.1) contrast(0.9);
 }
 
 .footer__copyright {
-    margin-top: 3rem;
+    width: 100%;
+    border-top: 1px solid rgba(210, 202, 135, 0.1);
+    padding-top: 2rem;
+    text-align: center;
 }
 
-@media screen and (min-width: 2000px) {
-    .app__footer-headtext {
-        font-size: 51px;
-        line-height: 61.6px;
-    }
-}
-
+/* --- TOP-CLASS RESPONSIVENESS --- */
 @media screen and (max-width: 1150px) {
     .app__footer-links {
-        align-items: center;
         flex-direction: column;
-        padding: 0;
+        align-items: center;
+        text-align: center;
     }
-
-    .app__footer-links_contact,
-    .app__footer-links_logo,
-    .app__footer-links_work {
-        margin: 2rem 0;
-        width: 100%;
+    .app__footer-links_logo {
+        margin: 3rem 0;
     }
 }
 
 @media screen and (max-width: 650px) {
-    .app__footer {
-        padding: 0 0 2rem 0;
+    .footer-logo-premium-glow {
+        width: 130px;
+        height: 130px;
     }
-}
-
-@media screen and (max-width: 350px) {
-    .app__footer-links_logo img:first-child {
-        width: 80%;
+    .footer__headtext {
+        font-size: 28px;
     }
 }

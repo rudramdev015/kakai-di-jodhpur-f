@@ -1,10 +1,12 @@
 .app__aboutus {
     position: relative;
+    overflow: hidden; /* Ensures the overlay doesn't break layout */
 }
 
 .app__aboutus-overlay {
     position: absolute;
     inset: 0;
+    opacity: 0.15; /* Subtly visible for a high-end feel */
 }
 
 .app__aboutus-overlay img {
@@ -16,33 +18,38 @@
 .app__aboutus-content {
     width: 100%;
     z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+/* --- Left Text Section --- */
 .app__aboutus-content_about {
     flex: 1;
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
     flex-direction: column;
-
     text-align: right;
 }
 
+/* --- Center Knife Section --- */
 .app__aboutus-content_knife {
     margin: 2rem 4rem;
 }
 
 .app__aboutus-content_knife img {
-    height: 910px;
+    height: 910px; /* Iconic scale */
+    filter: drop-shadow(0 0 20px rgba(210, 202, 135, 0.2));
 }
 
+/* --- Right Text Section --- */
 .app__aboutus-content_history {
     flex: 1;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
     flex-direction: column;
-
     text-align: left;
 }
 
@@ -50,7 +57,11 @@
 .app__aboutus-content_history p {
     margin: 2rem 0;
     color: var(--color-grey);
+    max-width: 450px;
+    line-height: 1.8;
 }
+
+/* --- TOP-CLASS RESPONSIVENESS --- */
 
 @media screen and (min-width: 2000px) {
     .app__aboutus-content_knife img {
@@ -60,6 +71,17 @@
     .app__aboutus-content_about p,
     .app__aboutus-content_history p {
         margin: 4rem 0;
+        font-size: 24px;
+        max-width: 600px;
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    .app__aboutus-content_knife {
+        margin: 2rem;
+    }
+    .app__aboutus-content_knife img {
+        height: 700px;
     }
 }
 
@@ -70,6 +92,13 @@
 
     .app__aboutus-content_knife {
         margin: 4rem 0;
+        order: 2; /* Moves knife to middle on mobile */
+    }
+
+    .app__aboutus-content_about, 
+    .app__aboutus-content_history {
+        align-items: center;
+        text-align: center;
     }
 }
 
@@ -77,5 +106,8 @@
     .app__aboutus-overlay img {
         width: 80%;
         height: 320px;
+    }
+    .app__aboutus-content_knife img {
+        height: 500px;
     }
 }
