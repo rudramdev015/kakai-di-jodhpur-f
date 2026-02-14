@@ -1,6 +1,9 @@
 import React from 'react';
 import './App.css';
 
+// 1. Import Navbar from the components folder
+import { Navbar } from './components'; 
+
 import {
   AboutUs,
   Chef,
@@ -16,6 +19,9 @@ import {
 const App = () => {
   return (
     <div>
+      {/* 2. Add the Navbar component here */}
+      <Navbar /> 
+      
       <Header />
       <AboutUs />
       <SpecialMenu />
