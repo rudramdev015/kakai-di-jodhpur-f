@@ -54,4 +54,8 @@ const mainCourse = [
   },
 ];
 
-export default { lassis, mainCourse };
+const data = {
+  lassis,
+  mainCourse,
+};
+export default data;
