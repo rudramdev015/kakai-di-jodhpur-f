@@ -28,11 +28,10 @@
     border-bottom: 1px solid rgba(220, 202, 135, 0.15);
 }
 
-/* Logo Sizing */
 .heritage-logo-svg {
-    height: 75px;
-    width: auto;
-    transition: 0.4s;
+    height: auto;
+    transition: .4s;
+    width: 250px;
 }
 
 .navbar-glass-active .heritage-logo-svg {
@@ -139,8 +138,9 @@
     .navbar-glass-active {
         height: 65px;
     }
-    .heritage-logo-svg {
-        height: 55px;
+        .heritage-logo-svg {
+        height: auto;
+        width: 205px;
     }
     .premium-whatsapp-btn {
         padding: 8px 14px;
