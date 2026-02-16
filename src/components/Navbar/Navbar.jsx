@@ -13,7 +13,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 30);
+      setScrolled(window.scrollY > 50);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -23,61 +23,67 @@ const Navbar = () => {
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=Namaste! I'd like to book a table.`;
 
   return (
-    <nav className={`app__navbar ${scrolled ? 'navbar-glass-active' : ''}`}>
-      
-      {/* BRANDING */}
-      <div className="app__navbar-logo">
-        <a href="#home">
-          <img src={logo} alt="Kake Di Hatti Jodhpur" className="heritage-logo-svg" />
-        </a>
-      </div>
-
-      {/* DESKTOP LINKS */}
-      <ul className="app__navbar-links">
-        <li className="p__opensans"><a href="#home">Home</a></li>
-        <li className="p__opensans"><a href="#about">About</a></li>
-        <li className="p__opensans"><a href="#menu">Menu</a></li>
-        <li className="p__opensans"><a href="#contact">Contact</a></li>
-      </ul>
-
-      {/* ACTION BUTTONS (Hidden on small mobile, shown on tablet/desktop) */}
-      <div className="app__navbar-actions">
-        <a href={`tel:+${phoneNumber}`} className="nav-action-call">
-          <FiPhoneCall className="icon-pulse" />
-          <span className="hide-on-tablet">Call Us</span>
-        </a>
-        <div className="vertical-divider hide-on-tablet" />
-        <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="premium-whatsapp-btn">
-          <FaWhatsapp className="whatsapp-icon" />
-          <span>Book Table</span>
-        </a>
-      </div>
-
-      {/* MOBILE INTERFACE */}
-      <div className="app__navbar-smallscreen">
-        <GiHamburgerMenu color="#D2CA87" className="hamburger-icon" onClick={() => setToggleMenu(true)} />
+    <nav className={`app__navbar ${scrolled ? 'navbar__active' : ''}`}>
+      <div className="app__navbar-container">
         
-        {toggleMenu && (
-          <div className="app__navbar-mobile-overlay scale-in-center">
-            <MdOutlineRestaurantMenu fontSize={35} className="overlay__close" onClick={() => setToggleMenu(false)} />
-            
-            <div className="mobile-menu-content">
-                <img src={logo} alt="Logo" className="mobile-overlay-logo" />
-                <ul className="app__navbar-mobile-links">
-                    <li><a href="#home" onClick={() => setToggleMenu(false)}>Home</a></li>
-                    <li><a href="#about" onClick={() => setToggleMenu(false)}>About</a></li>
-                    <li><a href="#menu" onClick={() => setToggleMenu(false)}>Menu</a></li>
-                    <li><a href="#contact" onClick={() => setToggleMenu(false)}>Contact</a></li>
-                </ul>
+        {/* LOGO SECTION */}
+        <div className="app__navbar-logo">
+          <a href="#home">
+            <img src={logo} alt="Kake Di Hatti" className="nav__logo-img" />
+          </a>
+        </div>
 
-                <div className="mobile-cta-container">
-                    <a href={`tel:+${phoneNumber}`} className="mobile-btn call-outline"><FiPhoneCall /> Call Now</a>
-                    <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="mobile-btn wa-solid"><FaWhatsapp /> WhatsApp Booking</a>
-                </div>
+        {/* DESKTOP NAVIGATION */}
+        <ul className="app__navbar-links">
+          <li><a href="#home" className="nav__link">Home</a></li>
+          <li><a href="#about" className="nav__link">About</a></li>
+          <li><a href="#menu" className="nav__link">Menu</a></li>
+          <li><a href="#contact" className="nav__link">Contact</a></li>
+        </ul>
+
+        {/* ACTION BUTTONS */}
+        <div className="app__navbar-actions">
+          <a href={`tel:+${phoneNumber}`} className="nav__action-phone">
+            <FiPhoneCall className="phone-icon" />
+            <span className="hide-mobile">Call Now</span>
+          </a>
+          
+          <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="nav__action-book">
+            <FaWhatsapp className="wa-icon" />
+            <span>BOOK TABLE</span>
+          </a>
+
+          {/* MOBILE TOGGLE ICON */}
+          <div className="app__navbar-menu-toggle">
+            <GiHamburgerMenu onClick={() => setToggleMenu(true)} />
+          </div>
+        </div>
+      </div>
+
+      {/* MOBILE OVERLAY */}
+      {toggleMenu && (
+        <div className="app__navbar-overlay slide-bottom">
+          <MdOutlineRestaurantMenu 
+            className="overlay__close" 
+            onClick={() => setToggleMenu(false)} 
+          />
+          
+          <div className="overlay__content">
+            <img src={logo} alt="Logo" className="overlay__logo" />
+            <ul className="overlay__links">
+              <li><a href="#home" onClick={() => setToggleMenu(false)}>Home</a></li>
+              <li><a href="#about" onClick={() => setToggleMenu(false)}>About</a></li>
+              <li><a href="#menu" onClick={() => setToggleMenu(false)}>Menu</a></li>
+              <li><a href="#contact" onClick={() => setToggleMenu(false)}>Contact</a></li>
+            </ul>
+            
+            <div className="overlay__btns">
+               <a href={`tel:+${phoneNumber}`} className="overlay__btn-call">Call Us</a>
+               <a href={whatsappUrl} className="overlay__btn-wa">WhatsApp Booking</a>
             </div>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </nav>
   );
 };
