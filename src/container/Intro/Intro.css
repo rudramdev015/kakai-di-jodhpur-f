@@ -1,3 +1,15 @@
+/* Define the golden color if not already defined in your global CSS */
+:root {
+    --color-golden: #dcca87; 
+}
+
+/* Utility class used in your React code */
+.flex__center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .app__video {
     height: 100vh;
     position: relative;
@@ -5,7 +17,7 @@
     overflow: hidden;
 }
 
-/* Use height 100dvh for modern mobile browsers to fix address bar issues */
+/* Modern mobile browser fix for address bars */
 @supports (height: 100dvh) {
     .app__video {
         height: 100dvh;
@@ -23,14 +35,21 @@
     inset: 0;
     background: rgba(0, 0, 0, 0.45); /* Darker overlay for better contrast */
     transition: background 0.5s ease;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    z-index: 2;
 }
 
-/* When video is playing, make overlay lighter or hidden */
+/* When video is playing, make overlay lighter */
 .hide-overlay {
     background: rgba(0, 0, 0, 0.1);
+}
+
+/* Hide the button when playing, show it on hover */
+.hide-overlay .app__video-overlay_circle {
+    opacity: 0;
+}
+
+.app__video-overlay:hover .app__video-overlay_circle {
+    opacity: 1;
 }
 
 .app__video-overlay_circle {
@@ -41,6 +60,9 @@
     cursor: pointer;
     transition: all 0.3s ease;
     background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .app__video-overlay_circle:hover {
@@ -60,35 +82,36 @@
         width: 150px;
         height: 150px;
     }
-    .app__video-overlay_circle svg {
+    .app__video-overlay_circle .video-icon {
         font-size: 45px !important;
     }
 }
 
-/* For Tablets and smaller Desktops */
+/* For Tablets */
 @media screen and (max-width: 1024px) {
     .app__video {
-        height: 70vh; /* Adjust height for tablet view if you don't want full screen */
+        height: 70vh; 
     }
 }
 
-/* For Mobile Devices (Phones) */
+/* For Mobile Devices */
 @media screen and (max-width: 650px) {
     .app__video {
-        height: 50vh; /* Best height for mobile scrolling */
+        height: 50vh; 
     }
 
     .app__video-overlay_circle {
-        width: 60px; /* Smaller button for mobile */
+        width: 60px; 
         height: 60px;
+        opacity: 1 !important; /* Always show button on mobile since there is no hover */
     }
 
-    .app__video-overlay_circle svg {
+    .app__video-overlay_circle .video-icon {
         font-size: 20px !important;
     }
 }
 
-/* For very small phones or landscape mobile */
+/* Landscape mobile fix */
 @media screen and (max-height: 450px) {
     .app__video {
         height: 100vh;

@@ -3,7 +3,10 @@ import React from 'react';
 import { SubHeading, MenuItem } from '../../components';
 import { data, images } from '../../constants';
 import './SpecialMenu.css';
-import menuPdf from './Kake Menu.pdf'; // This links your uploaded PDF
+
+// Import local assets
+import naanImg from './Naan.png'; 
+import menuPdf from './Kake Menu.pdf'; 
 
 const SpecialMenu = () => (
   <div className="app__specialMenu flex__center section__padding" id="menu">
@@ -22,8 +25,9 @@ const SpecialMenu = () => (
         </div>
       </div>
 
+      {/* REFINED IMAGE SECTION */}
       <div className="app__specialMenu-menu_img">
-        <img src={images.menu} alt="menu__img" />
+        <img src={naanImg} alt="menu__img" className="img__glow-animation" />
       </div>
 
       <div className="app__specialMenu-menu_mains flex__center">

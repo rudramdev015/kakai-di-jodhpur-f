@@ -23,28 +23,7 @@
     font-size: 45px;
     line-height: 58.5px;
     letter-spacing: 0.04em;
-    color: #DCCA87; /* Golden color for a top-class feel */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.app__specialMenu-menu_lassi,
-.app__specialMenu-menu_mains {
-    flex: 1;
-    width: 100%;
-    flex-direction: column;
-}
-
-.app__specialMenu-menu_img {
-    width: 410px;
-    margin: 0 2rem;
-    border: 1px solid #DCCA87;
-    padding: 12px;
-    box-shadow: 0px 0px 25px rgba(220, 202, 135, 0.2); /* Soft gold glow */
-}
-
-.app__specialMenu-menu_img img {
-    width: 100%;
-    height: auto;
+    color: var(--color-white);
 }
 
 .app__specialMenu_menu_items {
@@ -54,14 +33,60 @@
     width: 100%;
 }
 
-/* Button Refinement */
-.custom__button:hover {
-    background: #DCCA87;
-    color: #000;
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
-    transition: 0.3s all ease-in-out;
+/* --- REFINED IMAGE STYLE --- */
+
+.app__specialMenu-menu_img {
+    width: 410px;
+    margin: 0 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+.app__specialMenu-menu_img img {
+    width: 100%;
+    height: auto;
+    /* REMOVED: Border and rigid frame */
+    
+    /* ADDED: High-effort shadow/glow that follows the shape of the PNG */
+    filter: drop-shadow(0px 0px 20px rgba(220, 202, 135, 0.4));
+    transition: filter 0.5s ease;
+}
+
+/* Floating Animation */
+.img__glow-animation {
+    animation: floatImage 5s ease-in-out infinite;
+}
+
+@keyframes floatImage {
+    0% {
+        transform: translateY(0px);
+        filter: drop-shadow(0px 5px 15px rgba(220, 202, 135, 0.3));
+    }
+    50% {
+        transform: translateY(-15px);
+        filter: drop-shadow(0px 15px 30px rgba(220, 202, 135, 0.5));
+    }
+    100% {
+        transform: translateY(0px);
+        filter: drop-shadow(0px 5px 15px rgba(220, 202, 135, 0.3));
+    }
+}
+
+.app__specialMenu-menu_img img:hover {
+    filter: drop-shadow(0px 0px 40px rgba(220, 202, 135, 0.7));
+}
+
+/* --- END IMAGE REFINEMENT --- */
+
+.app__specialMenu-menu_lassi,
+.app__specialMenu-menu_mains {
+    flex: 1;
+    width: 100%;
+    flex-direction: column;
+}
+
+/* --- RESPONSIVENESS --- */
 
 @media screen and (max-width: 1150px) {
     .app__specialMenu-menu {
@@ -69,6 +94,7 @@
         align-items: center;
         width: 100%;
     }
+
     .app__specialMenu-menu_img {
         margin: 3rem 0;
     }
@@ -78,7 +104,13 @@
     .app__specialMenu-menu_img {
         width: 100%;
     }
+
+    .app__specialMenu-menu_img img {
+        width: 80%; /* Smaller on mobile */
+    }
+
     .app__specialMenu-menu_heading {
-        font-size: 32px;
+        font-size: 35px;
+        line-height: 48.5px;
     }
 }
